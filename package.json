@@ -1,0 +1,48 @@
+{
+  "name": "api-002",
+  "version": "1.0.0",
+  "description": "BackEnd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "seed": "ts-node src/scripts/seed.ts",
+    "vercel-build": "npm run build",
+    "migration:new": "supabase migration new",
+    "migration:up": "supabase db push",
+    "migration:list": "supabase migration list"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mobilecosta/api-002.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mobilecosta/api-002/issues"
+  },
+  "homepage": "https://github.com/mobilecosta/api-002#readme",
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.3.1",
+    "supabase": "^2.76.15",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
+  }
+}
