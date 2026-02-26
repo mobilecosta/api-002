@@ -10,7 +10,7 @@ import { dashboardRouter } from "./modules/dashboard/dashboard.routes";
 import { transfersRouter } from "./modules/transfers/transfers.routes";
 import { authMiddleware } from "./shared/middlewares/auth.middleware";
 import { errorMiddleware } from "./shared/middlewares/error.middleware";
-import { env } from "./shared/config/env";
+import { env, getMissingEnvVars } from "./shared/config/env";
 
 const app = express();
 
@@ -23,7 +23,8 @@ app.use(
 app.use(express.json());
 
 app.get("/health", (_req, res) => {
-  res.json({ ok: true });
+  const missingEnv = getMissingEnvVars();
+  res.status(missingEnv.length ? 503 : 200).json({ ok: missingEnv.length === 0, missingEnv });
 });
 
 app.use("/auth", authRouter);

@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { supabase } from "../../shared/config/supabase";
+import { getSupabase } from "../../shared/config/supabase";
 
 const goalsRouter = Router();
+const supabase = getSupabase();
 
 goalsRouter.get("/", async (req, res, next) => {
   try {

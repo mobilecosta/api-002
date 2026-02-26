@@ -2,9 +2,10 @@ import { Router } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { env } from "../../shared/config/env";
-import { supabase } from "../../shared/config/supabase";
+import { getSupabase } from "../../shared/config/supabase";
 
 const authRouter = Router();
+const supabase = getSupabase();
 
 authRouter.post("/register", async (req, res, next) => {
   try {

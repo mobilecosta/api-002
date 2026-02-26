@@ -1,6 +1,21 @@
-import { createClient } from "@supabase/supabase-js";
-import { env } from "./env";
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
+import { env, getMissingEnvVars } from "./env";
 
-export const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, {
-  auth: { persistSession: false }
-});
+let client: SupabaseClient<any, "public", any> | null = null;
+
+export const getSupabase = () => {
+  if (client) return client;
+
+  const missing = getMissingEnvVars();
+  const hasRequiredEnv = missing.length === 0;
+
+  client = createClient<any>(
+    hasRequiredEnv ? env.SUPABASE_URL : "https://invalid.local",
+    hasRequiredEnv ? env.SUPABASE_SERVICE_ROLE_KEY : "invalid",
+    {
+    auth: { persistSession: false }
+    }
+  );
+
+  return client;
+};

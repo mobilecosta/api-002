@@ -1,5 +1,7 @@
-import { supabase } from "../shared/config/supabase";
+import { getSupabase } from "../shared/config/supabase";
 import bcrypt from "bcrypt";
+
+const supabase = getSupabase();
 
 const defaultCategories = [
   { name: "Salario", type: "INCOME", color: "#1f8f4a" },

@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { supabase } from "../../shared/config/supabase";
+import { getSupabase } from "../../shared/config/supabase";
 
 const categoriesRouter = Router();
+const supabase = getSupabase();
 
 categoriesRouter.get("/", async (req, res, next) => {
   try {

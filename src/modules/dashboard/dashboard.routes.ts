@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { supabase } from "../../shared/config/supabase";
+import { getSupabase } from "../../shared/config/supabase";
 
 const dashboardRouter = Router();
+const supabase = getSupabase();
 
 const toNumber = (value: unknown): number => Number(value ?? 0);
 
