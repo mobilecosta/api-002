@@ -57,6 +57,16 @@ Fluxo produção:
 - Executar `supabase db push` no pipeline (GitHub Actions/CI) antes do deploy da API.
 - Não editar schema manualmente no painel.
 
+## GitHub Actions Secrets
+Você precisa cadastrar no GitHub repo `api-002` (`Settings > Secrets and variables > Actions`) estes secrets:
+
+- `SUPABASE_ACCESS_TOKEN`
+- `SUPABASE_DB_PASSWORD`
+- `SUPABASE_PROJECT_REF`
+- `VERCEL_TOKEN`
+- `VERCEL_ORG_ID`
+- `VERCEL_PROJECT_ID`
+
 ## Seed
 - `npm run seed`
 - Cria categorias padrão por usuário
